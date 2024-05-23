@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Từ Mận Hào BC-69 Bài tập js buổi 5</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Icon web -->
+    <link
+      rel="shortcut icon"
+      href="https://cdn.kibrispdr.org/data/78/blue-side-league-3.png"
+      type="image/x-icon"
+    />
+    <title>Quản Lý Tuyển Sinh</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background: white;
+        padding: 20px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+    
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin: 10px 0 5px;
+        color: #333;
+        font-weight: bold;
+      }
+
+      input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px;
+        border: none;
+        background-color: #28a745;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: #218838;
+      }
+
+      .result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container mt-5">
+        <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Bài 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Bài 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">Bài 3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">Bài 4</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+      <h1>Quản Lý Tuyển Sinh</h1>
+      <form id="admissionForm">
+        <label for="diemChuan">Điểm chuẩn:</label>
+        <input type="number" id="diemChuan" placeholder="Nhập vào điểm chuẩn" />
+
+        <label for="diemMon1">Điểm môn 1:</label>
+        <input
+          type="number"
+          id="diemMon1"
+          required
+          placeholder="Nhập vào điểm môn thứ nhất"
+        />
+
+        <label for="diemMon2">Điểm môn 2:</label>
+        <input
+          type="number"
+          id="diemMon2"
+          required
+          placeholder="Nhập vào điểm môn thứ hai"
+        />
+
+        <label for="diemMon3">Điểm môn 3:</label>
+        <input
+          type="number"
+          id="diemMon3"
+          required
+          placeholder="Nhập vào điểm môn thứ ba"
+        />
+
+        <label for="khuVuc">Khu vực (A, B, C, X):</label>
+        <input
+          type="text"
+          id="khuVuc"
+          placeholder="Nhập khu vực ưu tiên, nhập X nếu không thuộc khu vực ưu tiên."
+        />
+
+        <label for="doiTuong">Đối tượng (1, 2, 3, 0):</label>
+        <input
+          type="number"
+          id="doiTuong"
+          required
+          placeholder="Nhập đối tượng ưu tiên, nhập 0 nếu không thuộc đối tượng ưu tiên."
+        />
+
+        <button type="button" onclick="calculateResult()">Kiểm tra</button>
+      </form>
+
+      <div class="result" id="result"></div>
+    </div>
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+      <h1>Tính Tiền Điện</h1>
+      <form id="electricityForm">
+        <label for="ten">Họ Tên:</label>
+        <input type="text" id="ten" required placeholder="Nhập họ và tên"/>
+
+        <label for="soKw">Số Kw:</label>
+        <input type="number" id="soKw" required placeholder="Nhập số điện sử dụng"/>
+
+        <button type="button" onclick="calculateElectricityBill()">
+          Tính Tiền
+        </button>
+      </form>
+      <div class="result" id="electricityResult"></div>
+    </div>
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+        <h2 class="text-center">Tính Thuế Thu Nhập Cá Nhân</h2>
+        <form id="taxForm">
+            <div class="form-group">
+                <label for="hoTen">Họ Tên:</label>
+                <input type="text" class="form-control" id="hoTen" required placeholder="Nhập họ và tên">
+            </div>
+            <div class="form-group">
+                <label for="tongThuNhap">Tổng Thu Nhập 1 Năm (triệu VND):</label>
+                <input type="number" class="form-control" id="tongThuNhap" required placeholder="Nhập vào tiền triệu. vd: 120tr/năm thì nhập 120">
+            </div>
+            <div class="form-group">
+                <label for="soNguoiPhuThuoc">Số Người Phụ Thuộc:</label>
+                <input type="number" class="form-control" id="soNguoiPhuThuoc" required placeholder="0">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="calculateTax()">Tính Thuế</button>
+        </form>
+        <div class="result" id="taxResult"></div>
+    </div>
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  --><!--  -->
+    <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+        <h2 class="text-center">Tính Tiền Cáp</h2>
+        <form id="capForm">
+            <div class="form-group">
+                <label for="maKhachHang">Mã Khách Hàng:</label>
+                <input type="text" class="form-control" id="maKhachHang" required>
+            </div>
+            <div class="form-group">
+                <label for="loaiKhachHang">Loại Khách Hàng:</label>
+                <select class="form-control" id="loaiKhachHang" onchange="toggleConnections()">
+                    <option value="nhadan">Nhà dân</option>
+                    <option value="doanhnghiep">Doanh nghiệp</option>
+                </select>
+            </div>
+            <div class="form-group" id="ketNoiGroup" style="display:none;">
+                <label for="soKetNoi">Số Kết Nối:</label>
+                <input type="number" class="form-control" id="soKetNoi" min="0">
+            </div>
+            <div class="form-group">
+                <label for="soKenhCaoCap">Số Kênh Cao Cấp:</label>
+                <input type="number" class="form-control" id="soKenhCaoCap" min="0" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="calculateBill()">Tính Tiền</button>
+        </form>
+        <div class="result" id="billResult"></div>
+    </div>
+    <!-- Bootstrap JavaScript Libraries -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </div>
+</div>
+    <script src="./index.js"></script>
+  </body>
+</html>
